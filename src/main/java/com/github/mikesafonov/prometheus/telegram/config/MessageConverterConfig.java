@@ -1,5 +1,6 @@
 package com.github.mikesafonov.prometheus.telegram.config;
 
+import com.github.mikesafonov.prometheus.telegram.service.message.CustomMessageConverter;
 import com.github.mikesafonov.prometheus.telegram.service.message.EmojiService;
 import com.github.mikesafonov.prometheus.telegram.service.message.MessageConverter;
 import com.github.mikesafonov.prometheus.telegram.service.message.SimpleMessageConverter;
@@ -21,7 +22,7 @@ public class MessageConverterConfig {
     @Bean
     @ConditionalOnMissingBean(MessageConverter.class)
     public MessageConverter simpleMessageConverter(EmojiService emojiService) {
-        return new SimpleMessageConverter(emojiService);
+        return new CustomMessageConverter(emojiService);
     }
 
     @Bean
